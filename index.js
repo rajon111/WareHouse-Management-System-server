@@ -40,7 +40,7 @@ async function run(){
       const accessToken=jwt.sign(user,process.env.ACCESS_TOKEN_SECRET,{
         expiresIn:'1d'
       })
-      res.send({accessToken})
+      res.send({accressToken})
     })
 
     //GET- all product
@@ -94,6 +94,7 @@ async function run(){
     app.get('/myitems',verifyJWT ,async(req,res)=>{
       const decodedEmail = req.decoded.email
       const email = req.query.email
+
       if(email===decodedEmail){
         const query= {email}
         const cursor = productCollection.find(query)
